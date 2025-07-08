@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>О нас — Secret of Beauty</title>
+    <link rel="icon" href="assets/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brandDark: "#1F1F1F",
+              brandLight: "#F9F9F9",
+              brandAccent: "#D4AF37",
+            },
+            fontFamily: {
+              body: ["Poppins", "sans-serif"],
+              serif: ["Playfair Display", "serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-body bg-brandLight text-brandDark">
+    <!-- Header как в index.html -->
+    <header class="bg-brandDark text-brandLight">
+      <div
+        class="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
+        <h1 class="text-2xl font-serif">Secret of Beauty</h1>
+        <button id="nav-toggle" class="md:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <nav id="nav-menu" class="hidden md:flex space-x-6 text-sm">
+          <a href="index.html" class="hover:text-brandAccent">Главная</a>
+          <a href="about.html" class="hover:text-brandAccent">О нас</a>
+          <a href="services.html" class="hover:text-brandAccent">Услуги</a>
+          <a href="contact.html" class="hover:text-brandAccent">Контакты</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- О нас -->
+    <section class="py-16">
+      <div
+        class="max-w-5xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-3xl font-serif mb-4">Наша история</h2>
+          <p class="mb-4">
+            «Secret of Beauty» — это объединение традиций и современного
+            мастерства. Мы создаём образы, в которых каждый чувствует себя
+            увереннее.
+          </p>
+          <p>
+            Наши мастера — профессионалы с опытом более 10 лет. Мы ценим каждую
+            деталь и дарим клиентам атмосферу уюта и стиля.
+          </p>
+        </div>
+        <img
+          src="assets/images/about.jpg"
+          alt="О нас"
+          class="rounded-lg shadow-lg w-full object-cover h-80" />
+      </div>
+    </section>
+
+    <!-- Команда -->
+    <section class="py-16 bg-brandLight">
+      <div class="max-w-5xl mx-auto px-4 text-center mb-8">
+        <h2 class="text-3xl font-serif">Наша команда</h2>
+      </div>
+      <div
+        class="max-w-5xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Карточка мастера -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <img
+            src="assets/images/team1.jpg"
+            alt="Иван"
+            class="w-32 h-32 rounded-full mx-auto mb-4" />
+          <h3 class="font-serif text-xl mb-1">Иван</h3>
+          <p class="text-sm text-gray-600">Главный барбер</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <img
+            src="assets/images/team2.jpg"
+            alt="Алексей"
+            class="w-32 h-32 rounded-full mx-auto mb-4" />
+          <h3 class="font-serif text-xl mb-1">Алексей</h3>
+          <p class="text-sm text-gray-600">Мастер мужских стрижек</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <img
+            src="assets/images/team3.jpg"
+            alt="Сергей"
+            class="w-32 h-32 rounded-full mx-auto mb-4" />
+          <h3 class="font-serif text-xl mb-1">Сергей</h3>
+          <p class="text-sm text-gray-600">Специалист по бороде</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <img
+            src="assets/images/team4.jpg"
+            alt="Дмитрий"
+            class="w-32 h-32 rounded-full mx-auto mb-4" />
+          <h3 class="font-serif text-xl mb-1">Дмитрий</h3>
+          <p class="text-sm text-gray-600">Колорист</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brandDark text-brandLight py-6">
+      <div class="max-w-7xl mx-auto text-center text-sm">
+        &copy; 2025 Secret of Beauty. Все права защищены.
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

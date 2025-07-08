@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Контакты — Secret of Beauty</title>
+    <link rel="icon" href="assets/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brandDark: "#1F1F1F",
+              brandLight: "#F9F9F9",
+              brandAccent: "#D4AF37",
+            },
+            fontFamily: {
+              body: ["Poppins", "sans-serif"],
+              serif: ["Playfair Display", "serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-body bg-brandLight text-brandDark">
+    <!-- Header -->
+    <header class="bg-brandDark text-brandLight">
+      <div
+        class="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
+        <h1 class="text-2xl font-serif">Secret of Beauty</h1>
+        <button id="nav-toggle" class="md:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <nav id="nav-menu" class="hidden md:flex space-x-6 text-sm">
+          <a href="index.html" class="hover:text-brandAccent">Главная</a>
+          <a href="about.html" class="hover:text-brandAccent">О нас</a>
+          <a href="services.html" class="hover:text-brandAccent">Услуги</a>
+          <a href="contact.html" class="hover:text-brandAccent">Контакты</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Контакты -->
+    <section class="py-16">
+      <div class="max-w-5xl mx-auto px-4 grid lg:grid-cols-2 gap-8">
+        <!-- Форма -->
+        <div>
+          <h2 class="text-3xl font-serif mb-4">Записаться</h2>
+          <form action="#" class="space-y-4">
+            <div>
+              <label class="block mb-1 text-sm">Имя</label>
+              <input
+                type="text"
+                required
+                class="w-full border border-gray-300 rounded px-3 py-2" />
+            </div>
+            <div>
+              <label class="block mb-1 text-sm">Телефон</label>
+              <input
+                type="tel"
+                required
+                class="w-full border border-gray-300 rounded px-3 py-2" />
+            </div>
+            <div>
+              <label class="block mb-1 text-sm">Услуга</label>
+              <select class="w-full border border-gray-300 rounded px-3 py-2">
+                <option>Мужская стрижка</option>
+                <option>Стрижка бороды</option>
+                <option>Комбо (стр/борода)</option>
+                <option>Колорирование</option>
+              </select>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block mb-1 text-sm">Дата</label>
+                <input
+                  type="date"
+                  class="w-full border border-gray-300 rounded px-3 py-2" />
+              </div>
+              <div>
+                <label class="block mb-1 text-sm">Время</label>
+                <input
+                  type="time"
+                  class="w-full border border-gray-300 rounded px-3 py-2" />
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="bg-brandAccent hover:bg-yellow-500 text-white px-6 py-2 rounded">
+              Отправить
+            </button>
+          </form>
+        </div>
+        <!-- Контакты и карта -->
+        <div>
+          <h2 class="text-3xl font-serif mb-4">Наши контакты</h2>
+          <ul class="space-y-2 mb-6">
+            <li><strong>Адрес:</strong> ул. Ленина, 10, Мурманск</li>
+            <li><strong>Телефон:</strong> +7 (921) 123-45-67</li>
+            <li><strong>Email:</strong> info@secretbeauty.ru</li>
+            <li><strong>Часы работы:</strong> 10:00 – 20:00, без выходных</li>
+          </ul>
+          <!-- Замените src на свой Google Maps Embed URL -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2230.123456789!2d33.123456!3d68.972123!2m3!1f0!2f0!3f0!3m2!"
+            width="100%"
+            height="250"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brandDark text-brandLight py-6">
+      <div class="max-w-7xl mx-auto text-center text-sm">
+        &copy; 2025 Secret of Beauty. Все права защищены.
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

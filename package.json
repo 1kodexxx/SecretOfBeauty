@@ -1,0 +1,16 @@
+{
+  "name": "secret-of-beauty",
+  "version": "1.0.0",
+  "scripts": {
+    "build:css": "postcss css/input.css -o dist/css/output.css",
+    "build:html": "node scripts/build.js",
+    "build": "yarn build:css && yarn build:html",
+    "dev": "yarn build && live-server dist"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.5",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^10.1.0",
+    "autoprefixer": "^10.4.17"
+  }
+}
