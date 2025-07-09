@@ -15,18 +15,9 @@
 ## 🎥 Превью
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/1kodexxx/SecretOfBeauty/main/assets/gifs/secret-of-beauty1.gif" alt="Демонстрация на компьютере" width="600" />
-  <p><strong>Десктопная версия сайта</strong></p>
+  <img src="https://raw.githubusercontent.com/1kodexxx/SecretOfBeauty/main/assets/images/secret-of-beauty.gif" alt="Мобильная версия сайта Secret of Beauty" width="300" />
+  <p><strong>Мобильная версия сайта</strong></p>
 </div>
-
-<table align="center">
-  <tr>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/1kodexxx/SecretOfBeauty/main/assets/gifs/secret-of-beauty2.gif" alt="Мобильная версия сайта" width="300" />
-      <p><strong>Мобильная версия сайта</strong></p>
-    </td>
-  </tr>
-</table>
 
 ---
 
