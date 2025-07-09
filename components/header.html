@@ -17,41 +17,33 @@
 
       <!-- Меню по центру -->
       <ul
-        class="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 space-x-6 text-roseTaupe font-medium text-base">
+        class="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 space-x-6">
         <li>
           <a
             href="#home"
-            class="relative group px-1 py-1 transition-colors duration-300 hover:text-oldRose">
+            class="nav-link relative px-1 py-1 text-roseTaupe hover:text-oldRose transition after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:bg-oldRose after:w-0 after:transition-all after:duration-300">
             Главная
-            <span
-              class="absolute left-0 -bottom-0.5 w-0 h-0.5 bg-oldRose transition-all duration-300 group-hover:w-full"></span>
           </a>
         </li>
         <li>
           <a
             href="#about"
-            class="relative group px-1 py-1 transition-colors duration-300 hover:text-oldRose">
+            class="nav-link relative px-1 py-1 text-roseTaupe hover:text-oldRose transition after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:bg-oldRose after:w-0 after:transition-all after:duration-300">
             О нас
-            <span
-              class="absolute left-0 -bottom-0.5 w-0 h-0.5 bg-oldRose transition-all duration-300 group-hover:w-full"></span>
           </a>
         </li>
         <li>
           <a
             href="#services"
-            class="relative group px-1 py-1 transition-colors duration-300 hover:text-oldRose">
+            class="nav-link relative px-1 py-1 text-roseTaupe hover:text-oldRose transition after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:bg-oldRose after:w-0 after:transition-all after:duration-300">
             Услуги
-            <span
-              class="absolute left-0 -bottom-0.5 w-0 h-0.5 bg-oldRose transition-all duration-300 group-hover:w-full"></span>
           </a>
         </li>
         <li>
           <a
             href="#contact"
-            class="relative group px-1 py-1 transition-colors duration-300 hover:text-oldRose">
+            class="nav-link relative px-1 py-1 text-roseTaupe hover:text-oldRose transition after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:bg-oldRose after:w-0 after:transition-all after:duration-300">
             Контакты
-            <span
-              class="absolute left-0 -bottom-0.5 w-0 h-0.5 bg-oldRose transition-all duration-300 group-hover:w-full"></span>
           </a>
         </li>
       </ul>
@@ -118,13 +110,36 @@
   </nav>
 </header>
 
-<!-- Добавьте у <main> отступ сверху, равный высоте header (примерно 4rem) -->
+<!-- Отступ, чтобы ничего не пряталось зафиксированным header -->
 <main class="mt-16">
-  <!-- Здесь ваши секции -->
+  <!-- Секции: #home, #about, #services, #contact ... -->
 </main>
 
 <script>
-  document.getElementById("menu-toggle").addEventListener("click", () => {
-    document.getElementById("mobile-menu").classList.toggle("hidden");
+  document.addEventListener("DOMContentLoaded", () => {
+    const links = Array.from(document.querySelectorAll(".nav-link"));
+    const sections = links.map((a) =>
+      document.querySelector(a.getAttribute("href"))
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const idx = sections.indexOf(entry.target);
+          if (idx < 0) return;
+          const link = links[idx];
+
+          if (entry.isIntersecting) {
+            // меняем цвет текста и растягиваем underline
+            link.classList.add("text-oldRose", "after:w-full");
+          } else {
+            link.classList.remove("text-oldRose", "after:w-full");
+          }
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px" }
+    );
+
+    sections.forEach((sec) => sec && observer.observe(sec));
   });
 </script>
