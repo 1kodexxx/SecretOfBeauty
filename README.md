@@ -25,10 +25,6 @@
       <img src="./assets/gifs/secret-of-beauty2.gif" alt="Услуги и стиль" width="300" />
       <p><strong>Услуги и стиль</strong></p>
     </td>
-    <td align="center">
-      <img src="./assets/images/apple-touch-icon.png" alt="Иконки и favicon" width="300" />
-      <p><strong>Иконки и бренд</strong></p>
-    </td>
   </tr>
 </table>
 
