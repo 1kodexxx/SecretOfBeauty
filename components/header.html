@@ -1,3 +1,9 @@
+<style>
+  /* Отступ при скролле для фиксированного хедера */
+  html {
+    scroll-padding-top: 4rem;
+  }
+</style>
 <header class="fixed top-0 left-0 w-full bg-linen shadow-md z-50">
   <nav>
     <div
@@ -188,5 +194,31 @@
     );
 
     sections.forEach((sec) => sec && observer.observe(sec));
+  });
+  // Центрируем при клике на якорные ссылки
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const id = this.getAttribute("href").substring(1);
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+  });
+
+  // Центрируем при загрузке страницы с хешем
+  document.addEventListener("DOMContentLoaded", () => {
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.substring(1);
+      const section = document.getElementById(id);
+      if (section) {
+        // Небольшая задержка, чтобы избежать конфликта с дефолтным скроллом
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 50);
+      }
+    }
   });
 </script>
