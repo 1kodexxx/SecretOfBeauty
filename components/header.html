@@ -12,9 +12,7 @@
           <path
             d="M32 2C18 2 6 14 6 28s12 26 26 26 26-12 26-26S46 2 32 2zm0 4c11 0 20 9 20 20s-9 20-20 20S12 37 12 26 21 6 32 6zm0 44c-9 0-16 3-16 7v3h32v-3c0-4-7-7-16-7z" />
         </svg>
-        <span class="text-roseTaupe text-lg font-semibold">
-          Секрет Красоты
-        </span>
+        <span class="text-roseTaupe text-lg font-semibold">Секрет Красоты</span>
       </a>
 
       <!-- Меню по центру -->
@@ -58,14 +56,14 @@
         </li>
       </ul>
 
-      <!-- Обновлённая кнопка записи -->
+      <!-- Кнопка записи (desktop) -->
       <a
         href="#booking"
-        class="inline-block rounded border border-roseTaupe px-6 py-3 font-medium text-roseTaupe hover:bg-roseTaupe hover:text-white transition">
+        class="hidden lg:inline-block rounded border border-roseTaupe px-6 py-3 font-medium text-roseTaupe hover:bg-roseTaupe hover:text-white transition">
         Записаться
       </a>
 
-      <!-- Мобильный бургер -->
+      <!-- Бургер для мобильного -->
       <button id="menu-toggle" class="lg:hidden text-roseTaupe z-10">
         <svg
           class="h-6 w-6"
@@ -112,10 +110,11 @@
             >Контакты</a
           >
         </li>
+        <!-- Возвращаем кнопку “Записаться” в выпадающем меню -->
         <li>
           <a
             href="#booking"
-            class="inline-block rounded border border-roseTaupe px-6 py-3 font-medium text-roseTaupe hover:bg-roseTaupe hover:text-white transition">
+            class="block w-full rounded border border-roseTaupe px-4 py-2 text-center font-medium text-roseTaupe hover:bg-roseTaupe hover:text-white transition">
             Записаться
           </a>
         </li>
