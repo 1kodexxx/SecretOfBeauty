@@ -1,9 +1,9 @@
-<header class="shadow-md relative z-50">
-  <nav class="bg-linen">
+<header class="fixed top-0 left-0 w-full bg-linen shadow-md z-50">
+  <nav>
     <div
-      class="max-w-screen-xl mx-auto px-4 lg:px-6 h-16 flex items-center justify-between relative">
+      class="max-w-screen-xl mx-auto px-4 lg:px-6 h-16 flex items-center justify-between">
       <!-- Логотип -->
-      <a href="index.html" class="flex items-center space-x-2 z-10">
+      <a href="index.html" class="flex items-center space-x-2">
         <svg
           class="h-8 w-8 text-roseTaupe"
           viewBox="0 0 64 64"
@@ -58,13 +58,13 @@
 
       <!-- Кнопка записи (desktop) -->
       <a
-        href="#booking"
+        href="#contact"
         class="hidden lg:inline-block rounded border border-roseTaupe px-6 py-3 font-medium text-roseTaupe hover:bg-roseTaupe hover:text-white transition">
         Записаться
       </a>
 
       <!-- Бургер для мобильного -->
-      <button id="menu-toggle" class="lg:hidden text-roseTaupe z-10">
+      <button id="menu-toggle" class="lg:hidden text-roseTaupe">
         <svg
           class="h-6 w-6"
           fill="none"
@@ -106,7 +106,6 @@
             >Контакты</a
           >
         </li>
-        <!-- Возвращаем кнопку “Записаться” в выпадающем меню -->
         <li>
           <a
             href="#booking"
@@ -117,11 +116,15 @@
       </ul>
     </div>
   </nav>
-
-  <!-- Скрипт открытия мобильного меню -->
-  <script>
-    document.getElementById("menu-toggle").addEventListener("click", () => {
-      document.getElementById("mobile-menu").classList.toggle("hidden");
-    });
-  </script>
 </header>
+
+<!-- Добавьте у <main> отступ сверху, равный высоте header (примерно 4rem) -->
+<main class="mt-16">
+  <!-- Здесь ваши секции -->
+</main>
+
+<script>
+  document.getElementById("menu-toggle").addEventListener("click", () => {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+  });
+</script>
