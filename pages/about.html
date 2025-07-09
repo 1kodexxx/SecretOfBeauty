@@ -1,19 +1,85 @@
-<section id="about" class="py-16 bg-background">
-  <div class="max-w-5xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
-    <div>
-      <h2 class="text-3xl text-accent font-medium mb-4">Наша история</h2>
-      <p class="text-neutral mb-4">
-        «Secret of Beauty» — это объединение традиций и современного мастерства.
-        Мы создаём образы, в которых каждый чувствует себя увереннее.
-      </p>
-      <p class="text-neutral">
-        Наши мастера — профессионалы с опытом более 10 лет. Мы ценим каждую
-        деталь и дарим клиентам атмосферу уюта и стиля.
-      </p>
+<!-- pages/about.html -->
+<style>
+  /* Анимация движения снизу и появления */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  /* Изначально скрытые элементы */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  /* Класс, запускающий анимацию */
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  /* Задержка для второго блока */
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+</style>
+
+<section
+  id="about"
+  class="min-h-screen flex items-center bg-background overflow-hidden">
+  <div class="w-full mx-auto px-0 sm:px-4 sm:max-w-5xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <!-- Текстовая часть -->
+      <div class="animate-on-scroll" data-delay="0">
+        <h2 class="text-3xl text-accent font-medium mb-4">Наша история</h2>
+        <p class="text-neutral mb-4">
+          «Секрет Красоты» — это объединение традиций и современного мастерства.
+          Мы создаём образы, в которых каждый чувствует себя увереннее.
+        </p>
+        <p class="text-neutral">
+          Наши мастера — профессионалы с опытом более 10 лет. Мы ценим каждую
+          деталь и дарим клиентам атмосферу уюта и стиля.
+        </p>
+      </div>
+      <!-- Картинка -->
+      <div class="animate-on-scroll delay-200" data-delay="200">
+        <img
+          src="../assets/images/about.jpg"
+          alt="О нас"
+          class="rounded-lg shadow-lg w-full h-auto" />
+      </div>
     </div>
-    <img
-      src="../assets/images/about.jpg"
-      alt="О нас"
-      class="rounded-lg shadow-lg w-full h-80 object-cover" />
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.2,
+    };
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          // Добавляем класс для анимации
+          el.classList.add("fade-in-up");
+          // Если есть задержка в data-delay, применяем её
+          const delay = el.dataset.delay;
+          if (delay) {
+            el.style.animationDelay = delay + "ms";
+          }
+          // Больше не наблюдаем этот элемент
+          obs.unobserve(el);
+        }
+      });
+    }, options);
+
+    document
+      .querySelectorAll("#about .animate-on-scroll")
+      .forEach((el) => observer.observe(el));
+  });
+</script>

@@ -1,7 +1,29 @@
-<section id="contact" class="py-16 bg-background">
-  <div class="max-w-5xl mx-auto px-4 grid lg:grid-cols-2 gap-8">
-    <!-- форма -->
-    <div>
+<!-- pages/contact.html -->
+<style>
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+</style>
+
+<section id="contact" class="min-h-screen py-16 bg-background overflow-hidden">
+  <div
+    class="w-full mx-auto px-0 sm:px-4 sm:max-w-5xl grid lg:grid-cols-2 gap-8">
+    <!-- Форма -->
+    <div class="animate-on-scroll" data-delay="0">
       <h2 class="text-3xl text-accent font-medium mb-4">Записаться</h2>
       <form action="#" class="space-y-4">
         <div>
@@ -48,8 +70,9 @@
         </button>
       </form>
     </div>
-    <!-- контакты + карта -->
-    <div>
+
+    <!-- Контакты + карта -->
+    <div class="animate-on-scroll" data-delay="200">
       <h2 class="text-3xl text-accent font-medium mb-4">Наши контакты</h2>
       <ul class="space-y-2 mb-6 text-neutral">
         <li><strong>Адрес:</strong> ул. Ленина, 10, Мурманск</li>
@@ -63,8 +86,30 @@
         height="250"
         class="rounded-lg shadow-lg border-0"
         allowfullscreen=""
-        loading="lazy">
-      </iframe>
+        loading="lazy"></iframe>
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const delay = el.dataset.delay || 0;
+            el.style.animationDelay = delay + "ms";
+            el.classList.add("fade-in-up");
+            obs.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    document
+      .querySelectorAll("#contact .animate-on-scroll")
+      .forEach((el) => observer.observe(el));
+  });
+</script>

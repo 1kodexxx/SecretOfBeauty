@@ -1,34 +1,94 @@
-<section id="services" class="py-16 bg-background">
-  <div class="max-w-5xl mx-auto px-4 text-center mb-8">
+<!-- pages/services.html -->
+<style>
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+</style>
+
+<section id="services" class="min-h-screen py-16 bg-background overflow-hidden">
+  <!-- Заголовок -->
+  <div
+    class="w-full mx-auto px-0 sm:px-4 sm:max-w-5xl text-center mb-8 animate-on-scroll"
+    data-delay="0">
     <h2 class="text-3xl text-accent font-medium">Наши услуги</h2>
     <p class="text-neutral">От классики до экспериментальных образов</p>
   </div>
-  <div class="max-w-5xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-    <!-- карточка услуги -->
-    <div class="bg-background rounded-lg shadow-lg p-6">
+
+  <!-- Карточки -->
+  <div
+    class="w-full mx-auto px-0 sm:px-4 sm:max-w-5xl grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Для каждой карточки задаём animate-on-scroll и data-delay для ступенчатого эффекта -->
+    <div
+      class="bg-background rounded-lg shadow-lg p-6 animate-on-scroll"
+      data-delay="100">
       <h3 class="text-2xl text-accent font-medium mb-2">Мужская стрижка</h3>
       <p class="text-neutral mb-4">Точное исполнение и индивидуальный подход</p>
       <span class="font-bold text-accent">от 1 500 ₽</span>
     </div>
-    <div class="bg-background rounded-lg shadow-lg p-6">
+    <div
+      class="bg-background rounded-lg shadow-lg p-6 animate-on-scroll"
+      data-delay="200">
       <h3 class="text-2xl text-accent font-medium mb-2">Стрижка бороды</h3>
       <p class="text-neutral mb-4">Форма и уход за каждой волосинкой</p>
       <span class="font-bold text-accent">от 800 ₽</span>
     </div>
-    <div class="bg-background rounded-lg shadow-lg p-6">
+    <div
+      class="bg-background rounded-lg shadow-lg p-6 animate-on-scroll"
+      data-delay="300">
       <h3 class="text-2xl text-accent font-medium mb-2">Комбо (стр/борода)</h3>
       <p class="text-neutral mb-4">Максимальный комфорт и экономия времени</p>
       <span class="font-bold text-accent">от 2 000 ₽</span>
     </div>
-    <div class="bg-background rounded-lg shadow-lg p-6">
+    <div
+      class="bg-background rounded-lg shadow-lg p-6 animate-on-scroll"
+      data-delay="400">
       <h3 class="text-2xl text-accent font-medium mb-2">Детская стрижка</h3>
       <p class="text-neutral mb-4">Дружелюбная атмосфера для юных клиентов</p>
       <span class="font-bold text-accent">от 1 200 ₽</span>
     </div>
-    <div class="bg-background rounded-lg shadow-lg p-6">
+    <div
+      class="bg-background rounded-lg shadow-lg p-6 animate-on-scroll"
+      data-delay="500">
       <h3 class="text-2xl text-accent font-medium mb-2">Колорирование</h3>
       <p class="text-neutral mb-4">Выразительный оттенок и защита волос</p>
       <span class="font-bold text-accent">от 2 500 ₽</span>
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const delay = el.dataset.delay || 0;
+            el.style.animationDelay = delay + "ms";
+            el.classList.add("fade-in-up");
+            obs.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    document
+      .querySelectorAll("#services .animate-on-scroll")
+      .forEach((el) => observer.observe(el));
+  });
+</script>
