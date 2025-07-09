@@ -63,7 +63,6 @@
 
       <!-- Бургер для мобильного -->
       <button id="menu-toggle" class="lg:hidden text-roseTaupe relative z-50">
-        <!-- Иконка гамбургера -->
         <svg
           id="icon-open"
           class="h-6 w-6"
@@ -76,7 +75,6 @@
             stroke-width="2"
             d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <!-- Иконка крестика -->
         <svg
           id="icon-close"
           class="h-6 w-6 hidden"
@@ -134,7 +132,6 @@
   </nav>
 </header>
 
-<!-- Отступ под фиксированный header -->
 <main class="mt-16">
   <!-- Секции: #home, #about, #services, #contact … -->
 </main>
@@ -145,6 +142,7 @@
   const iconOpen = document.getElementById("icon-open");
   const iconClose = document.getElementById("icon-close");
 
+  // Переключение мобильного меню
   menuToggle.addEventListener("click", () => {
     const isOpen = mobileMenu.classList.contains("scale-y-100");
     if (isOpen) {
@@ -158,67 +156,74 @@
     }
   });
 
-  // Закрыть меню при клике на пункт
+  // Обработчик клика по пункту мобильного меню
   document.querySelectorAll("#mobile-menu a").forEach((link) => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute("href").substring(1);
+      const section = document.getElementById(targetId);
+      if (section) {
+        // Центрируем секцию в окне
+        const rect = section.getBoundingClientRect();
+        const scrollY =
+          window.pageYOffset || document.documentElement.scrollTop;
+        const offset = (window.innerHeight - rect.height) / 2;
+        const targetY = scrollY + rect.top - offset;
+        window.scrollTo({ top: targetY, behavior: "smooth" });
+      }
+      // Закрыть меню
       mobileMenu.classList.replace("scale-y-100", "scale-y-0");
       iconOpen.classList.remove("hidden");
       iconClose.classList.add("hidden");
     });
   });
 
-  // Подсветка активного пункта (Desktop)
+  // Подсветка активного пункта (Desktop) и центрирование при десктопном клике
   document.addEventListener("DOMContentLoaded", () => {
     const links = Array.from(document.querySelectorAll(".nav-link"));
     const sections = links.map((a) =>
       document.querySelector(a.getAttribute("href"))
     );
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const idx = sections.indexOf(entry.target);
-          if (idx < 0) return;
-          const link = links[idx];
-
-          if (entry.isIntersecting) {
-            link.classList.add("text-oldRose", "after:w-full");
-            link.classList.remove("text-roseTaupe");
-          } else {
-            link.classList.remove("text-oldRose", "after:w-full");
-            link.classList.add("text-roseTaupe");
+          if (idx >= 0) {
+            const link = links[idx];
+            if (entry.isIntersecting) {
+              link.classList.add("text-oldRose", "after:w-full");
+              link.classList.remove("text-roseTaupe");
+            } else {
+              link.classList.remove("text-oldRose", "after:w-full");
+              link.classList.add("text-roseTaupe");
+            }
           }
         });
       },
       { rootMargin: "-50% 0px -50% 0px" }
     );
-
     sections.forEach((sec) => sec && observer.observe(sec));
-  });
-  // Центрируем при клике на якорные ссылки
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const id = this.getAttribute("href").substring(1);
-      const section = document.getElementById(id);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-    });
-  });
 
-  // Центрируем при загрузке страницы с хешем
-  document.addEventListener("DOMContentLoaded", () => {
+    // Центрирование при десктопном клике
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const id = this.getAttribute("href").substring(1);
+        const sec = document.getElementById(id);
+        if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    // Центрирование при загрузке с хешем
     const hash = window.location.hash;
     if (hash) {
       const id = hash.substring(1);
-      const section = document.getElementById(id);
-      if (section) {
-        // Небольшая задержка, чтобы избежать конфликта с дефолтным скроллом
-        setTimeout(() => {
-          section.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 50);
-      }
+      const sec = document.getElementById(id);
+      if (sec)
+        setTimeout(
+          () => sec.scrollIntoView({ behavior: "smooth", block: "center" }),
+          50
+        );
     }
   });
 </script>
