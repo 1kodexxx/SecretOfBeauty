@@ -1,13 +1,35 @@
 const fs = require("fs");
 const path = require("path");
 
-// Чтение компонентов
-const header = fs.readFileSync("components/header.html", "utf8");
-const footer = fs.readFileSync("components/footer.html", "utf8");
-const page = fs.readFileSync("pages/home.html", "utf8");
+// Пути
+const COMPONENTS_DIR = path.resolve(__dirname, "../components");
+const PAGES_DIR = path.resolve(__dirname, "../pages");
+const DIST_DIR = path.resolve(__dirname, "../dist");
 
-// Финальный HTML
-const html = `<!DOCTYPE html>
+// Читаем header и footer
+const header = fs.readFileSync(
+  path.join(COMPONENTS_DIR, "header.html"),
+  "utf8"
+);
+const footer = fs.readFileSync(
+  path.join(COMPONENTS_DIR, "footer.html"),
+  "utf8"
+);
+
+// Сканируем все .html в папке pages
+const pageFiles = fs.readdirSync(PAGES_DIR).filter((f) => f.endsWith(".html"));
+
+// Собираем контент страниц
+const pagesHtml = pageFiles
+  .map((fileName) => {
+    const raw = fs.readFileSync(path.join(PAGES_DIR, fileName), "utf8").trim();
+    const sectionId = path.basename(fileName, ".html");
+    return `<section id="${sectionId}" class="py-20 px-4">\n${raw}\n</section>`;
+  })
+  .join("\n\n");
+
+// Итоговый index.html
+const finalHtml = `<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -16,19 +38,26 @@ const html = `<!DOCTYPE html>
   <link rel="stylesheet" href="css/output.css" />
 </head>
 <body class="font-body bg-ivory text-chocoWax">
+
   ${header}
-  ${page}
+
+  <main>
+  ${pagesHtml}
+  </main>
+
   ${footer}
+
 </body>
 </html>`;
 
-// Создание dist и запись
-if (!fs.existsSync("dist")) fs.mkdirSync("dist");
-fs.writeFileSync("dist/index.html", html);
+// Пишем в dist
+if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR, { recursive: true });
+fs.writeFileSync(path.join(DIST_DIR, "index.html"), finalHtml, "utf8");
 
-// Копирование assets
-const srcAssets = path.resolve("assets");
-const destAssets = path.resolve("dist/assets");
-fs.cpSync(srcAssets, destAssets, { recursive: true });
+// Копируем assets
+const ASSETS_SRC = path.resolve(__dirname, "../assets");
+const ASSETS_DST = path.resolve(DIST_DIR, "assets");
+fs.rmSync(ASSETS_DST, { recursive: true, force: true });
+fs.cpSync(ASSETS_SRC, ASSETS_DST, { recursive: true });
 
 console.log("✅ Сборка завершена: dist/index.html");

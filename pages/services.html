@@ -1,107 +1,34 @@
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Услуги — Secret of Beauty</title>
-    <link rel="icon" href="assets/favicon.ico" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              brandDark: "#1F1F1F",
-              brandLight: "#F9F9F9",
-              brandAccent: "#D4AF37",
-            },
-            fontFamily: {
-              body: ["Poppins", "sans-serif"],
-              serif: ["Playfair Display", "serif"],
-            },
-          },
-        },
-      };
-    </script>
-  </head>
-  <body class="font-body bg-brandLight text-brandDark">
-    <!-- Header -->
-    <header class="bg-brandDark text-brandLight">
-      <div
-        class="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
-        <h1 class="text-2xl font-serif">Secret of Beauty</h1>
-        <button id="nav-toggle" class="md:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-        <nav id="nav-menu" class="hidden md:flex space-x-6 text-sm">
-          <a href="index.html" class="hover:text-brandAccent">Главная</a>
-          <a href="about.html" class="hover:text-brandAccent">О нас</a>
-          <a href="services.html" class="hover:text-brandAccent">Услуги</a>
-          <a href="contact.html" class="hover:text-brandAccent">Контакты</a>
-        </nav>
-      </div>
-    </header>
-
-    <!-- Услуги -->
-    <section class="py-16">
-      <div class="max-w-5xl mx-auto px-4 text-center mb-8">
-        <h2 class="text-3xl font-serif">Наши услуги</h2>
-        <p class="text-gray-600">От классики до экспериментальных образов</p>
-      </div>
-      <div
-        class="max-w-5xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Карточка услуги -->
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="font-serif text-2xl mb-2">Мужская стрижка</h3>
-          <p class="mb-4">Точное исполнение и индивидуальный подход</p>
-          <span class="font-bold">от 1 500 ₽</span>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="font-serif text-2xl mb-2">Стрижка бороды</h3>
-          <p class="mb-4">Форма и уход за каждой волосинкой</p>
-          <span class="font-bold">от 800 ₽</span>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="font-serif text-2xl mb-2">Комбо (стр/борода)</h3>
-          <p class="mb-4">Максимальный комфорт и экономия времени</p>
-          <span class="font-bold">от 2 000 ₽</span>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="font-serif text-2xl mb-2">Детская стрижка</h3>
-          <p class="mb-4">Дружелюбная атмосфера для юных клиентов</p>
-          <span class="font-bold">от 1 200 ₽</span>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="font-serif text-2xl mb-2">Колорирование</h3>
-          <p class="mb-4">Выразительный оттенок и защита волос</p>
-          <span class="font-bold">от 2 500 ₽</span>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="font-serif text-2xl mb-2">Свадебный образ</h3>
-          <p class="mb-4">Идеальный стиль для важного дня</p>
-          <span class="font-bold">от 3 000 ₽</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-brandDark text-brandLight py-6">
-      <div class="max-w-7xl mx-auto text-center text-sm">
-        &copy; 2025 Secret of Beauty. Все права защищены.
-      </div>
-    </footer>
-
-    <script src="js/main.js"></script>
-  </body>
-</html>
+<section id="services" class="py-16 bg-background">
+  <div class="max-w-5xl mx-auto px-4 text-center mb-8">
+    <h2 class="text-3xl text-accent font-medium">Наши услуги</h2>
+    <p class="text-neutral">От классики до экспериментальных образов</p>
+  </div>
+  <div class="max-w-5xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- карточка услуги -->
+    <div class="bg-background rounded-lg shadow-lg p-6">
+      <h3 class="text-2xl text-accent font-medium mb-2">Мужская стрижка</h3>
+      <p class="text-neutral mb-4">Точное исполнение и индивидуальный подход</p>
+      <span class="font-bold text-accent">от 1 500 ₽</span>
+    </div>
+    <div class="bg-background rounded-lg shadow-lg p-6">
+      <h3 class="text-2xl text-accent font-medium mb-2">Стрижка бороды</h3>
+      <p class="text-neutral mb-4">Форма и уход за каждой волосинкой</p>
+      <span class="font-bold text-accent">от 800 ₽</span>
+    </div>
+    <div class="bg-background rounded-lg shadow-lg p-6">
+      <h3 class="text-2xl text-accent font-medium mb-2">Комбо (стр/борода)</h3>
+      <p class="text-neutral mb-4">Максимальный комфорт и экономия времени</p>
+      <span class="font-bold text-accent">от 2 000 ₽</span>
+    </div>
+    <div class="bg-background rounded-lg shadow-lg p-6">
+      <h3 class="text-2xl text-accent font-medium mb-2">Детская стрижка</h3>
+      <p class="text-neutral mb-4">Дружелюбная атмосфера для юных клиентов</p>
+      <span class="font-bold text-accent">от 1 200 ₽</span>
+    </div>
+    <div class="bg-background rounded-lg shadow-lg p-6">
+      <h3 class="text-2xl text-accent font-medium mb-2">Колорирование</h3>
+      <p class="text-neutral mb-4">Выразительный оттенок и защита волос</p>
+      <span class="font-bold text-accent">от 2 500 ₽</span>
+    </div>
+  </div>
+</section>
