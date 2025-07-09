@@ -1,7 +1,7 @@
-# Secret of Beauty 💄 — Сайт студии красоты
+# 💄 Секрет Красоты — Сайт студии красоты
 
 <div align="center">
-  <img src="./assets/web-app-manifest-512x512" alt="Secret of Beauty Logo" width="200" />
+  <img src="./assets/web-app-manifest-512x512.png" alt="Secret of Beauty Logo" width="200" />
 </div>
 
 ---
