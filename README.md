@@ -15,7 +15,7 @@
 ## 🎥 Превью
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/1kodexxx/SecretOfBeauty/main/assets/images/secret-of-beauty.gif" alt="Мобильная версия сайта Secret of Beauty" width="300" />
+  <img src="./assets/secret-of-beauty.gif" alt="Мобильная версия сайта Secret of Beauty" width="300" />
   <p><strong>Мобильная версия сайта</strong></p>
 </div>
 
